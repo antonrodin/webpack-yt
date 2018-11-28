@@ -1,71 +1,52 @@
-# Configuración basica de webpack
+# Configuración basica de webpack-dev-server
+
+webpack-dev-server es una "preconfiguración" de webpack por llamarlo de alguna mamera que sirve nuestra aplicación desde la 
+memoria. Es útil por que podemos ver los cambios en tiempo real, según cambiemos nuestro proyecto. Sin tener que recompilar constantemente
+el código fuente.
 
 Ademas de clonar este "pequeño proyecto" puedes hacerlo tu mismo haciendo esto:
 
-0. Crear estructura de directorios:
+1. Instalar webpack-dev-server
 
 ```shell
-mkdir example-webpack
-cd example-webpack
-
-# Directorio donde estara guardado nuestro código fuente
-mkdir src
-
-# Directorio donde estara guardada nuestra app o archivos compilados
-mkdir dist
-
-# Aquí guardaremos nuestros archivos de configuración de webpack
-mkdir config
+sudo npm i -g webpack-dev-server
 ```
 
-1. Iniciar git & npm (Node Package Manager) con valores por defecto:
-
-```shell
-# Se creara archivo package.json con valores por defecto en nuestro directorio raíz
-npm init -y
-
-# Opcional. iniciar repositorio de git
-git init
-
-# Opcional. Si hemos iniciado repo, ignoramos la carpeta node_modules, para que no se añada al proyecto
-echo "node_modules" > .gitignore
-```
-
-2. Instalar webpack y webpack-cli
-
-```shell
-npm i -g webpack webpack-cli
-```
-
-La opcion __-g__ significa globalmente, es posible que necesites ejecutaro con permisos de administrador.
-
-3. Crear archivos basicos necesarios
-
-```shell
-# Archivo HTML
-touch dist/inex.html
-
-# Crear nuestro archivo app.js
-touch src/app.js
-
-# Crear archivo de configuración
-touch config/build.dev.js
-```
-
-Despues de rellenar los citados archivos con el contenido que puedes comprobar aquí mismo. Puedes ejecutar el comando:
-
-```shell
-webpack --config=config/build.dev.js
-```
-
-En la carpeta "dist" se creara un archivo llamado __bundle.js__
-
-Para mayor facilidad se puede editar el archivo __package.json__ para añadir esto dentro de los scripts:
+1. Creamos otro archivo configuración (__config/server.dev.js__) con este código.
 
 ```javascript
-"scripts": {
-    "build": "webpack --config=config/build.dev.js"
-},
+const path = require('path');
+
+module.exports = {
+
+    mode: "development",
+
+    entry: {
+        app: ['./src/app.js']
+    },
+    
+    output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "../dist"),
+        publicPath: "/"
+    },
+
+    devServer: {
+        contentBase: "dist"
+    }
+
+}
 ```
 
-Asi solo tenemos que ejecutar __npm run build__ para compilar nuestro archivo __app.js__
+2. Ahora podemos ejecutar webpack-dev-server
+
+```shell
+webpack-dev-server --config=config/server.dev.js
+```
+
+3. Por ultimo modificamos el archivo package.json para añadir dentro de los script esta linea:
+
+```javascript
+"server": "webpack-dev-server --config=config/server.dev.js"
+```
+
