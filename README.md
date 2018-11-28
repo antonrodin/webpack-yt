@@ -49,13 +49,13 @@ touch dist/inex.html
 touch src/app.js
 
 # Crear archivo de configuración
-touch config/webpack.dev.js
+touch config/build.dev.js
 ```
 
 Despues de rellenar los citados archivos con el contenido que puedes comprobar aquí mismo. Puedes ejecutar el comando:
 
 ```shell
-webpack --config=config/webpack.dev.js
+webpack --config=config/build.dev.js
 ```
 
 En la carpeta "dist" se creara un archivo llamado __bundle.js__
@@ -64,7 +64,7 @@ Para mayor facilidad se puede editar el archivo __package.json__ para añadir es
 
 ```javascript
 "scripts": {
-    "build": "webpack --config=config/webpack.dev.js"
+    "build": "webpack --config=config/build.dev.js"
 },
 ```
 
