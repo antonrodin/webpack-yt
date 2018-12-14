@@ -1,52 +1,36 @@
-# Configuración basica de webpack-dev-server
+# Integración Babel & Webpack
 
-webpack-dev-server es una "preconfiguración" de webpack por llamarlo de alguna mamera que sirve nuestra aplicación desde la 
-memoria. Es útil por que podemos ver los cambios en tiempo real, según cambiemos nuestro proyecto. Sin tener que recompilar constantemente
-el código fuente.
+Babel es un "transpilador" de archivos JavaScript de código moderno (ES2015, ES2018... etc) en código "antiguo" ES5 que entienden todos los
+navegadores actuales...
 
-Ademas de clonar este "pequeño proyecto" puedes hacerlo tu mismo haciendo esto:
+Instrucciones basicas:
 
-1. Instalar webpack-dev-server
+1. Instalar babel-loader, @babel/core y @babel/preset-env
 
 ```shell
-sudo npm i -g webpack-dev-server
+npm install --save-dev babel-loader @babel/core @babel/preset-env
 ```
 
-1. Creamos otro archivo configuración (__config/server.dev.js__) con este código.
+2. Crear archivo de configuración __.babelrc__
 
 ```javascript
-const path = require('path');
-
-module.exports = {
-
-    mode: "development",
-
-    entry: {
-        app: ['./src/app.js']
-    },
-    
-    output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, "../dist"),
-        publicPath: "/"
-    },
-
-    devServer: {
-        contentBase: "dist"
-    }
-
+{
+  "presets": ["@babel/preset-env"]
 }
 ```
 
-2. Ahora podemos ejecutar webpack-dev-server
-
-```shell
-webpack-dev-server --config=config/server.dev.js
-```
-
-3. Por ultimo modificamos el archivo package.json para añadir dentro de los script esta linea:
+3. Añadir dentro del objeto __module: {}__ en las configuración de webpack la siguiente regla:
 
 ```javascript
-"server": "webpack-dev-server --config=config/server.dev.js"
+module: {
+  rules: [
+    { 
+        test: /\.js$/, 
+        exclude: /node_modules/, 
+        loader: "babel-loader" 
+    }
+  ]
+}
 ```
 
+Es la configuración basica de integración, para especificar lo que tiene que hacer __babeljs__ se utiliza el citado __.babelrc__. En este caso se utiliza __preset-env__ una lista de plugins estandar.
