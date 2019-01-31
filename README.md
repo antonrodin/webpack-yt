@@ -27,8 +27,7 @@ npm i webpack webpack-cli webpack-dev-server --save-dev
 
 ```shell
 # Archivos configuración
-touch dist/inex.html src/app.js config/webpack.build.js
-touch dist/inex.html src/app.js config/webpack.server.js
+touch dist/inex.html src/app.js config/webpack.build.js config/webpack.server.js
 ```
 
 Despues de rellenar los citados archivos con el contenido que puedes comprobar aquí mismo. Puedes ejecutar el comando:
@@ -53,4 +52,4 @@ Para mayor facilidad se puede editar el archivo __package.json__ para añadir es
 },
 ```
 
-Asi solo tenemos que ejecutar __npm run build__ para compilar nuestro archivo __app.js__
+Asi solo tenemos que ejecutar __npm run build__ o __npm run server__ para compilar nuestro archivo __app.js__
