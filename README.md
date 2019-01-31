@@ -1,81 +1,15 @@
-# Configuración basica de webpack
+# Algunos ejemplos de Webpack (YouTube)
 
-Ademas de clonar este "pequeño proyecto" puedes hacerlo tu mismo haciendo esto:
+# Indice ramas:
 
-0. Crear estructura de directorios:
+1. Rama __master__ indice
 
-```shell
-mkdir example-webpack
-cd example-webpack
+2. Rama __webpack-global__ instalación y configuracion de webpack (global)
 
-# Directorio donde estara guardado nuestro código fuente
-mkdir src
+3. Rama __webpack-dev-server__ instalación y configuración de webpack-dev-server (global)
 
-# Directorio donde estara guardada nuestra app o archivos compilados
-mkdir dist
+4. Rama __webpack-local__ instalación y configuración de webpack y webpack dev server localmente (recomendada)
 
-# Aquí guardaremos nuestros archivos de configuración de webpack
-mkdir config
-```
-
-1. Iniciar git & npm (Node Package Manager) con valores por defecto:
-
-```shell
-# Se creara archivo package.json con valores por defecto en nuestro directorio raíz
-npm init -y
-
-# Opcional. iniciar repositorio de git
-git init
-
-# Opcional. Si hemos iniciado repo, ignoramos la carpeta node_modules, para que no se añada al proyecto
-echo "node_modules" > .gitignore
-```
-
-2. Instalar webpack y webpack-cli
-
-```shell
-npm i -g webpack webpack-cli
-```
-
-La opcion __-g__ significa globalmente, es posible que necesites ejecutaro con permisos de administrador.
-
-3. Crear archivos basicos necesarios
-
-```shell
-# Archivo HTML
-touch dist/inex.html
-
-# Crear nuestro archivo app.js
-touch src/app.js
-
-# Crear archivo de configuración
-touch config/build.dev.js
-```
-
-Despues de rellenar los citados archivos con el contenido que puedes comprobar aquí mismo. Puedes ejecutar el comando:
-
-```shell
-webpack --config=config/build.dev.js
-```
-
-En la carpeta "dist" se creara un archivo llamado __bundle.js__
-
-Para mayor facilidad se puede editar el archivo __package.json__ para añadir esto dentro de los scripts:
-
-```javascript
-"scripts": {
-    "build": "webpack --config=config/build.dev.js"
-},
-```
-
-Asi solo tenemos que ejecutar __npm run build__ para compilar nuestro archivo __app.js__
-
-# Indice para el resto de videos:
-
-1. Rama __master__ configuración inicial o boilerlplate
-
-2. Rama __webpack-dev-server__ configuración básica de webpack-dev-server
-
-3. ...
+5. Rama __webpack-babel__ integración con babel.
 
 Continuara ...
