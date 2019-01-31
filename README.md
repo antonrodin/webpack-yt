@@ -1,4 +1,7 @@
 # Configuración basica de webpack
+## Instalación global
+
+Código fuente instalando Webpack globalmente, es aconsejable instalar localmente... ver rama master.
 
 Ademas de clonar este "pequeño proyecto" puedes hacerlo tu mismo haciendo esto:
 
@@ -69,13 +72,3 @@ Para mayor facilidad se puede editar el archivo __package.json__ para añadir es
 ```
 
 Asi solo tenemos que ejecutar __npm run build__ para compilar nuestro archivo __app.js__
-
-# Indice para el resto de videos:
-
-1. Rama __master__ configuración inicial o boilerlplate
-
-2. Rama __webpack-dev-server__ configuración básica de webpack-dev-server
-
-3. ...
-
-Continuara ...
